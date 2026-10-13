@@ -116,6 +116,7 @@
   .policy-item:last-child{margin-bottom:0;}
   .policy-item .ptitle{font-weight:600;font-size:15px;color:var(--teal-deep);margin-bottom:3px;}
   .policy-item p{margin:0;font-size:14.5px;color:var(--ink-light);}
+  .policy-item p + p{margin-top:6px;}
 
   .agree{
     display:flex;
@@ -269,39 +270,62 @@
       </div>
     </section>
 
-    <section class="policy">
+     <section class="policy">
       <div class="bar">Studio rates &amp; policies</div>
       <div class="body">
         <div class="rates">
           <strong>30-minute lesson:</strong> $40 &nbsp;·&nbsp; <strong>1-hour lesson:</strong> $75 <span class="hint">(recommended for adult students)</span>
         </div>
-
+ 
         <div class="policy-item">
-          <div class="ptitle">Tuition &amp; payment</div>
-          <p>Tuition is billed monthly and due on the 1st via Interac e-Transfer, based on the exact number of lesson days that month (4 or 5 sessions). Need a different arrangement for a specific month? Just let Gabriel know before the 1st. Unpaid slots after the 1st may be released to the waiting list.</p>
+          <div class="ptitle">Why we have these policies</div>
+          <p>To ensure fairness, administrative consistency, and schedule integrity for all students, all studio time slots are secured under one unified structure. This protects dedicated recurring lesson times, treats every student under the same expectations, and keeps the learning environment predictable and high-quality for everyone.</p>
         </div>
+ 
         <div class="policy-item">
-          <div class="ptitle">Attendance &amp; instructor absences</div>
-          <p>Monthly tuition reserves your recurring weekly time slot. No refunds, credits, or makeup sessions for student absences (emergencies considered case-by-case). If Gabriel needs to miss a session, he'll work with you to reschedule.</p>
+          <div class="ptitle">1. Enrollment &amp; loyalty deposit</div>
+          <p><strong>Registration fee:</strong> A $15 registration fee applies upon initial enrollment.</p>
+          <p><strong>2-lesson deposit:</strong> To lock in a recurring weekly time slot, new students provide a 2-lesson deposit at registration, alongside the registration fee and first month's tuition.</p>
+          <p><strong>3-month loyalty credit:</strong> After 3 consecutive months of enrollment, the deposit is automatically applied as a credit toward your 4th month's tuition.</p>
+          <p><strong>Early discontinuation:</strong> If a student discontinues lessons before completing 3 months, the deposit covers the required 2-week cancellation notice period.</p>
         </div>
+ 
         <div class="policy-item">
-          <div class="ptitle">Studio calendar &amp; holidays</div>
-          <p>Lessons run as normal on most statutory holidays and Pro-D days. The studio is only closed for Thanksgiving Day, Christmas Eve, and Christmas Day. Any other planned closures will be communicated in advance, with tuition adjusted accordingly.</p>
+          <div class="ptitle">2. Tuition &amp; payment</div>
+          <p><strong>Due date:</strong> Tuition is billed monthly and is due on the 1st of each month via Interac e-Transfer.</p>
+          <p><strong>Monthly calculation:</strong> Tuition is based on the exact number of lesson days in that calendar month (4 or 5 sessions).</p>
+          <p>Paying on the 1st keeps billing clear and guarantees your slot. Unpaid slots after the 1st may be released.</p>
         </div>
+ 
         <div class="policy-item">
-          <div class="ptitle">Discontinuation notice</div>
-          <p>A 14-day notice prior to the 1st of the month is required to cancel or pause enrollment. Notice given on or near the last lesson of the month requires payment for the first 2 weeks of the following month.</p>
+          <div class="ptitle">3. Attendance &amp; cancellation</div>
+          <p><strong>Reserved slot:</strong> Monthly tuition reserves your specific recurring weekly time slot.</p>
+          <p><strong>No makeups or refunds:</strong> Confirmed lesson slots are final. No refunds, credits, or makeup sessions are issued for student absences, missed lessons, or schedule shifts.</p>
+          <p><strong>Instructor absences:</strong> If Gabriel needs to cancel a session, a makeup lesson will be arranged or tuition credited accordingly.</p>
         </div>
+ 
         <div class="policy-item">
-          <div class="ptitle">Registration &amp; re-enrollment fees</div>
-          <p>A $15 registration fee applies to brand-new enrollments starting in September (waived for returning students from summer break). If enrollment pauses for more than 3 months, the $15 fee applies again upon re-enrolling.</p>
+          <div class="ptitle">4. Discontinuation notice</div>
+          <p><strong>Notice requirement:</strong> A minimum 14-day written notice before the 1st of the month is required to pause or cancel enrollment.</p>
+          <p><strong>Timing:</strong> Notice given on or near the last lesson of the month requires payment for the first 2 weeks of the upcoming month (or uses the initial 2-lesson deposit if within the first 3 months).</p>
         </div>
-
+ 
+        <div class="policy-item">
+          <div class="ptitle">5. Studio calendar &amp; holidays</div>
+          <p><strong>Regular schedule:</strong> Lessons run as normal on most statutory holidays and Pro-D days.</p>
+          <p><strong>Studio holidays:</strong> The studio closes only for Thanksgiving Day, Christmas Eve, and Christmas Day. Tuition for affected months is adjusted so you are not charged for official studio closures.</p>
+        </div>
+ 
+        <div class="policy-item">
+          <div class="ptitle">6. Re-enrollment fee</div>
+          <p>If enrollment is paused for more than 3 months during the teaching year, the $15 registration fee applies again upon re-enrolling to reactivate your slot.</p>
+        </div>
+ 
         <label class="agree">
           <input type="checkbox" id="agreeBox" required>
-          <span>I have read, understood, and agree to the studio rates and policies above.</span>
+          <span>I have read, understood, and agree to the studio rates and policies above, including the registration fee and 2-lesson deposit due at enrollment.</span>
         </label>
-
+ 
         <div class="sig-row">
           <div class="field">
             <label class="q" for="signature">Type your name to sign</label>
@@ -315,6 +339,7 @@
         </div>
       </div>
     </section>
+ 
 
     <button type="submit" id="submitBtn">Send my info to Gabriel</button>
     <p class="fallback">Trouble sending this? Text or call Gabriel directly and he'll fill it in with you.</p>
