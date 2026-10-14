@@ -270,62 +270,90 @@
       </div>
     </section>
 
-     <section class="policy">
+     <!--
+=====================================================================
+EDIT 1 of 2 — CSS
+Find this line in the <style> block:
+
+  .policy-item p{margin:0;font-size:14.5px;color:var(--ink-light);}
+
+and add this new line directly UNDER it:
+=====================================================================
+-->
+
+  .policy-item p + p{margin-top:6px;}
+
+
+<!--
+=====================================================================
+EDIT 2 of 2 — POLICY SECTION
+In the <body>, find the line:
+
+    <section class="policy">
+
+Select everything from that line down to its closing </section>
+(the one right before <button type="submit" id="submitBtn">),
+delete it, and paste everything below in its place.
+=====================================================================
+-->
+
+    <section class="policy">
       <div class="bar">Studio rates &amp; policies</div>
       <div class="body">
         <div class="rates">
           <strong>30-minute lesson:</strong> $40 &nbsp;·&nbsp; <strong>1-hour lesson:</strong> $75 <span class="hint">(recommended for adult students)</span>
         </div>
- 
+
         <div class="policy-item">
           <div class="ptitle">Why we have these policies</div>
           <p>To ensure fairness, administrative consistency, and schedule integrity for all students, all studio time slots are secured under one unified structure. This protects dedicated recurring lesson times, treats every student under the same expectations, and keeps the learning environment predictable and high-quality for everyone.</p>
         </div>
- 
+
         <div class="policy-item">
           <div class="ptitle">1. Enrollment &amp; loyalty deposit</div>
           <p><strong>Registration fee:</strong> A $15 registration fee applies upon initial enrollment.</p>
-          <p><strong>2-lesson deposit:</strong> To lock in a recurring weekly time slot, new students provide a 2-lesson deposit at registration, alongside the registration fee and first month's tuition.</p>
-          <p><strong>3-month loyalty credit:</strong> After 3 consecutive months of enrollment, the deposit is automatically applied as a credit toward your 4th month's tuition.</p>
+          <p><strong>2-lesson deposit:</strong> To lock in a recurring weekly time slot, new students provide a 2-lesson deposit at registration, alongside the registration fee and first month's tuition. The deposit is <strong>$80 for 30-minute lessons</strong> or <strong>$150 for 1-hour lessons</strong>.</p>
+          <p><strong>3-month loyalty credit:</strong> If you continue past 3 consecutive months, the deposit is automatically applied as a credit toward your 4th month's tuition.</p>
+          <p><strong>If you won't continue past month 3:</strong> Give written notice by the 1st of your 3rd month, and the deposit is applied to your final 2 lessons (your month 3 tuition is reduced by that amount). The deposit is not refundable in cash.</p>
           <p><strong>Early discontinuation:</strong> If a student discontinues lessons before completing 3 months, the deposit covers the required 2-week cancellation notice period.</p>
         </div>
- 
+
         <div class="policy-item">
           <div class="ptitle">2. Tuition &amp; payment</div>
           <p><strong>Due date:</strong> Tuition is billed monthly and is due on the 1st of each month via Interac e-Transfer.</p>
           <p><strong>Monthly calculation:</strong> Tuition is based on the exact number of lesson days in that calendar month (4 or 5 sessions).</p>
           <p>Paying on the 1st keeps billing clear and guarantees your slot. Unpaid slots after the 1st may be released.</p>
         </div>
- 
+
         <div class="policy-item">
           <div class="ptitle">3. Attendance &amp; cancellation</div>
           <p><strong>Reserved slot:</strong> Monthly tuition reserves your specific recurring weekly time slot.</p>
           <p><strong>No makeups or refunds:</strong> Confirmed lesson slots are final. No refunds, credits, or makeup sessions are issued for student absences, missed lessons, or schedule shifts.</p>
           <p><strong>Instructor absences:</strong> If Gabriel needs to cancel a session, a makeup lesson will be arranged or tuition credited accordingly.</p>
         </div>
- 
+
         <div class="policy-item">
           <div class="ptitle">4. Discontinuation notice</div>
           <p><strong>Notice requirement:</strong> A minimum 14-day written notice before the 1st of the month is required to pause or cancel enrollment.</p>
           <p><strong>Timing:</strong> Notice given on or near the last lesson of the month requires payment for the first 2 weeks of the upcoming month (or uses the initial 2-lesson deposit if within the first 3 months).</p>
         </div>
- 
+
         <div class="policy-item">
           <div class="ptitle">5. Studio calendar &amp; holidays</div>
           <p><strong>Regular schedule:</strong> Lessons run as normal on most statutory holidays and Pro-D days.</p>
           <p><strong>Studio holidays:</strong> The studio closes only for Thanksgiving Day, Christmas Eve, and Christmas Day. Tuition for affected months is adjusted so you are not charged for official studio closures.</p>
         </div>
- 
+
         <div class="policy-item">
           <div class="ptitle">6. Re-enrollment fee</div>
           <p>If enrollment is paused for more than 3 months during the teaching year, the $15 registration fee applies again upon re-enrolling to reactivate your slot.</p>
         </div>
- 
+
         <label class="agree">
           <input type="checkbox" id="agreeBox" required>
-          <span>I have read, understood, and agree to the studio rates and policies above, including the registration fee and 2-lesson deposit due at enrollment.</span>
+          <span>I have read, understood, and agree to the studio rates and policies above, including the $15 registration fee and the 2-lesson deposit ($80 for 30-minute lessons, $150 for 1-hour lessons) due at enrollment.</span>
         </label>
- 
+
         <div class="sig-row">
           <div class="field">
             <label class="q" for="signature">Type your name to sign</label>
