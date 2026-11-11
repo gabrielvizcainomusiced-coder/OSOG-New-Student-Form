@@ -128,6 +128,7 @@
     margin-top:18px;
     cursor:pointer;
   }
+  .agree + .agree{margin-top:10px;}
   .agree input{width:22px;height:22px;flex:0 0 auto;margin-top:1px;accent-color:var(--teal-deep);}
   .agree span{font-size:15px;font-weight:500;}
 
@@ -197,9 +198,14 @@
           <input type="text" id="guardianName" name="Parent or guardian name" autocomplete="name">
         </div>
         <div class="field">
-          <label class="q" for="contact">Best email or phone number to reach you</label>
-          <input type="text" id="contact" name="Contact info" required autocomplete="email tel">
-          <div class="error-text">Please enter an email or phone number.</div>
+          <label class="q" for="email">Email</label>
+          <input type="email" id="email" name="email" required autocomplete="email" inputmode="email">
+          <div class="error-text">Please enter a valid email address.</div>
+        </div>
+        <div class="field">
+          <label class="q" for="phone">Phone number <span class="hint">(for scheduling and quick questions)</span></label>
+          <input type="tel" id="phone" name="Phone" required autocomplete="tel" inputmode="tel" placeholder="e.g. 250-555-0123">
+          <div class="error-text">Please enter a phone number with area code.</div>
         </div>
         <div class="field">
           <label class="q" for="preferredTime">Preferred lesson day &amp; time <span class="hint">(e.g. "Tuesdays at 7pm")</span></label>
@@ -325,29 +331,41 @@ delete it, and paste everything below in its place.
         </div>
 
         <div class="policy-item">
-          <div class="ptitle">3. Attendance &amp; cancellation</div>
-          <p><strong>Reserved slot:</strong> Monthly tuition reserves your specific recurring weekly time slot.</p>
-          <p><strong>No makeups or refunds:</strong> Confirmed lesson slots are final. No refunds, credits, or makeup sessions are issued for student absences, missed lessons, or schedule shifts.</p>
+          <div class="ptitle">3. Attendance, makeups &amp; cancellation</div>
+          <p><strong>Reserved slot:</strong> Monthly tuition reserves your specific recurring weekly time slot for the whole month, whether or not you attend.</p>
+          <p><strong>No makeups or refunds:</strong> No refunds, credits, or makeup sessions are issued for student absences, missed lessons, illness, travel, school breaks, or schedule shifts.</p>
+          <p><strong>Makeups at Gabriel's discretion:</strong> A makeup may occasionally be offered depending on availability. It is never guaranteed, does not carry over, and does not reduce tuition. Any exception is made once, in writing, and does not change this policy.</p>
+          <p><strong>Emergencies:</strong> Serious illness or genuine emergencies may be considered for a makeup lesson, offered upon Gabriel's availability and not whenever the student is able to attend.</p>
+          <p><strong>Planned absences:</strong> If you know about travel or a break, please tell Gabriel early. Tuition still applies, and he'll let you know what is possible.</p>
           <p><strong>Instructor absences:</strong> If Gabriel needs to cancel a session, a makeup lesson will be arranged or tuition credited accordingly.</p>
         </div>
 
         <div class="policy-item">
-          <div class="ptitle">4. Discontinuation notice</div>
+          <div class="ptitle">4. Pausing or ending lessons</div>
           <p><strong>Notice requirement:</strong> A minimum 14-day written notice before the 1st of the month is required to pause or cancel enrollment.</p>
+          <p><strong>Pausing releases your slot:</strong> A paused slot is not held. When you return, Gabriel will offer you an open time if one is available, but your original slot is not guaranteed.</p>
           <p><strong>Timing:</strong> Notice given on or near the last lesson of the month requires payment for the first 2 weeks of the upcoming month (or uses the initial 2-lesson deposit if within the first 3 months).</p>
         </div>
 
         <div class="policy-item">
           <div class="ptitle">5. Studio calendar &amp; holidays</div>
-          <p><strong>Regular schedule:</strong> Lessons run as normal on most statutory holidays and Pro-D days.</p>
+          <p><strong>Regular schedule:</strong> Lessons run as normal on statutory holidays, Pro-D days, and school breaks, including spring break and the weeks around Christmas.</p>
           <p><strong>Studio holidays:</strong> The studio closes only for Thanksgiving Day, Christmas Eve, and Christmas Day. Tuition for affected months is adjusted so you are not charged for official studio closures.</p>
         </div>
 
         <div class="policy-item">
           <div class="ptitle">6. Re-enrollment fee</div>
-          <p>If enrollment is paused for more than 3 months during the teaching year, the $15 registration fee applies again upon re-enrolling to reactivate your slot.</p>
+          <p>If lessons are paused for more than 3 months during the teaching year, the $15 registration fee applies again upon re-enrolling.</p>
         </div>
 
+        <label class="agree">
+          <input type="checkbox" id="agreeSlot" required>
+          <span>I understand that tuition reserves my time slot regardless of attendance, including holidays, school breaks, and travel, and that makeups are not guaranteed.</span>
+        </label>
+        <label class="agree">
+          <input type="checkbox" id="agreeNotice" required>
+          <span>I understand that pausing or ending lessons requires 14 days' written notice, and that pausing releases my slot.</span>
+        </label>
         <label class="agree">
           <input type="checkbox" id="agreeBox" required>
           <span>I have read, understood, and agree to the studio rates and policies above, including the $15 registration fee and the 2-lesson deposit ($80 for 30-minute lessons, $150 for 1-hour lessons) due at enrollment.</span>
@@ -400,18 +418,33 @@ delete it, and paste everything below in its place.
 
   function validate(){
     let ok = true;
-    ['studentName','contact','signature'].forEach(id => {
+    ['studentName','signature'].forEach(id => {
       const el = document.getElementById(id);
       const invalid = el.value.trim() === '';
       setInvalid(el, invalid);
       if (invalid) ok = false;
     });
-    if (!document.getElementById('agreeBox').checked){
-      ok = false;
-      document.getElementById('agreeBox').closest('.agree').style.outline = '2px solid #B3261E';
-    } else {
-      document.getElementById('agreeBox').closest('.agree').style.outline = 'none';
-    }
+
+    const emailEl = document.getElementById('email');
+    const emailBad = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim());
+    setInvalid(emailEl, emailBad);
+    if (emailBad) ok = false;
+
+    const phoneEl = document.getElementById('phone');
+    const phoneBad = phoneEl.value.replace(/\D/g, '').length < 10;
+    setInvalid(phoneEl, phoneBad);
+    if (phoneBad) ok = false;
+
+    ['agreeSlot','agreeNotice','agreeBox'].forEach(id => {
+      const box = document.getElementById(id);
+      const wrap = box.closest('.agree');
+      if (!box.checked){
+        ok = false;
+        wrap.style.outline = '2px solid #B3261E';
+      } else {
+        wrap.style.outline = 'none';
+      }
+    });
     return ok;
   }
 
